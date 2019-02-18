@@ -1,15 +1,17 @@
 <template>
   <div class="header container">
     <div class="logo">
+      <a href="/">
       <img src="logo.png">
+      </a>
     </div>
     <div class="menu">
       <ul>
-        <li><a>Home</a></li>
-        <li><a>Programing</a></li>
-        <li><a>Design</a></li>
-        <li><a>Who am I?</a></li>
-        <li><a>Contact</a></li>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/programming" >Programing</a></li>
+        <li><a href="/hobby" >Hobby</a></li>
+        <li><a href="/whoiam" >Who am I?</a></li>
+        <li><a href="/contact" >Contact</a></li>
       </ul>
     </div>
     <div class="search">
@@ -65,9 +67,11 @@ export default {
       display: inline-block;
       padding: 15px 25px;
       a{
+        color: #888;
         font-weight: bold;
         cursor: pointer;
-        &:hover{
+        &:hover,
+        &.active{
           color: #ca3a5c;
         }
       }

@@ -2,6 +2,7 @@
   <div class="home ">
     <Header/>
     <Intro/>
+    <Blog/>
     <Footer/>
   </div>
 </template>
@@ -11,13 +12,15 @@
 import Intro from "@/components/Intro.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Blog from "@/components/Blog.vue";
 
 export default {
   name: "home",
   components: {
     Intro,
     Header,
-    Footer
+    Footer,
+    Blog
   }
 };
 </script>

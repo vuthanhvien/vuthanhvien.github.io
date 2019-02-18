@@ -13,13 +13,13 @@
           <a>#JS</a>
         </p>
         <p class="social">
-          <a>
+          <a href="https://www.facebook.com/thangkubom742" target="_blank">
             <i class="fa fa-facebook"/>
           </a>
           <a>
             <i class="fa fa-instagram"/>
           </a>
-          <a>
+          <a href="https://www.youtube.com/channel/UCDqLCfHn9VMHk7bYG-xlvhw" target="_blank">
             <i class="fa fa-youtube"/>
           </a>
         </p>
@@ -46,7 +46,7 @@ export default {
 <style scoped lang="scss">
 .intro {
   padding-top: 150px;
-  padding-bottom: 50px;
+  padding-bottom: 120px;
   h1 {
     text-align: left;
     font-size: 48px;
@@ -73,25 +73,27 @@ export default {
   }
   .social {
     a {
+      color: #444;
+      font-size: 18px;
       margin-right: 15px;
     }
   }
   .avatar {
     display: inline-block;
-    width: 120px;
-    height: 120px;
+    width: 170px;
+    height: 170px;
     // border-radius: 60px;
     transform: rotate(45deg);
     overflow: hidden;
 
-    border-top: 3px solid #ca3a5c ;
-    border-right: 3px solid #ca3a5c ;
-    margin-top: 50px;
+    border-top: 3px solid #ca3a5c;
+    border-right: 3px solid #ca3a5c;
+    margin-top: 25px;
     img {
       width: 140%;
       transform: rotate(-45deg);
-      margin-top: -21px;
-      margin-left: -20px;
+      margin-top: -27px;
+      margin-left: -27px;
     }
   }
 }
