@@ -2,6 +2,7 @@
   <div class="home ">
     <Header/>
     <Intro/>
+    <div class="timeline"></div>
     <Footer/>
   </div>
 </template>

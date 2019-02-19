@@ -1,47 +1,22 @@
 <template>
   <div class="blog container">
     <div class="row">
-      <div class="col-md-8">
-        <div class="blog-detail">
+      <div :class="'col-md-'+post.width" v-for="post of data" :key="post.id">
+        <div class="blog-detail" :style="{background: `url(`+post.background+`)`}">
           <div class="content">
-            <p class="hashtag">#Programming</p>
-            <router-link to="/post/why-we" >
-
-            <h5>Why We Trust Apple and Google More Than Our Governments</h5>
+            <p class="hashtag">
+              <router-link
+                v-for="tag of post.tags"
+                :key="tag"
+                :to="{path: '/search', query: {s: tag}}"
+              >#{{tag}}</router-link>
+            </p>
+            <router-link :to="'/post/'+post.id">
+              <h5>{{post.title}}</h5>
             </router-link>
-            <p class="time">Posted 5 min ago</p>
+            <p class="time">Posted {{post.createdAt.seconds | formatDate}} by {{post.creator}}</p>
           </div>
-          <div class="overflow"/>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="blog-detail">
-           <div class="content">
-            <p class="hashtag">#Travel</p>
-            <h5>Why We Trust Apple and Google</h5>
-            <p class="time">Posted 8 min ago</p>
-          </div>
-          <div class="overflow"/>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="blog-detail">
-          <div class="overflow"/>
-        </div>
-      </div>
-      <div class="col-md-7">
-        <div class="blog-detail">
-          <div class="overflow"/>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="blog-detail">
-          <div class="overflow"/>
-        </div>
-      </div>
-       <div class="col-md-6">
-        <div class="blog-detail">
-          <div class="overflow"/>
+          <div class="overflow" :style="{background: post.color}"/>
         </div>
       </div>
     </div>
@@ -49,11 +24,10 @@
 </template>
 
 <script>
-
 export default {
   name: "Blog",
   props: {
-    msg: String
+    data: Array
   },
   data() {
     return {
@@ -62,8 +36,21 @@ export default {
         total: 15,
         limit: 20
       }
-    }
+    };
   },
+  watch: {
+    data() {
+      console.log(this.data);
+      this.data.forEach(item => {
+        item.tags = [];
+        Object.keys(item).forEach(key => {
+          if (key.indexOf("tag_") > -1) {
+            item.tags.push(key.substring(4));
+          }
+        });
+      });
+    }
+  }
 };
 </script>
 
@@ -79,15 +66,19 @@ export default {
     overflow: hidden;
     position: relative;
     padding-top: 170px;
-    background: url(https://dgqoanz82argk.cloudfront.net/images/content/5/7/v1/57769.jpg);
+    // background: url(https://dgqoanz82argk.cloudfront.net/images/content/5/7/v1/57769.jpg);
     .content {
       z-index: 1;
       position: relative;
       .hashtag {
         font-weight: bold;
         color: white;
+        a{
+          color: white;
+          margin-right: 5px;
+        }
       }
-      .time{
+      .time {
         color: white;
         opacity: 0.7;
         font-size: 12px;
@@ -95,6 +86,7 @@ export default {
       h5 {
         color: white;
         cursor: pointer;
+        font-size: 24px;
         &:hover {
           text-decoration: underline;
         }
@@ -110,8 +102,8 @@ export default {
       right: 0;
       left: 0;
       bottom: 0;
-      background: #c9365978;
       pointer-events: none;
+      opacity: 0.3;
       z-index: 0;
     }
   }

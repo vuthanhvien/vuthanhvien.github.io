@@ -2,11 +2,12 @@
   <div class="footer ">
     <div class="container">
       <div class="row">
-        <div class="col-md-9 logo">
+        <div class="col-md-3 logo text-center">
           <router-link to="/">
             <img src="/logo-white.png" />
           </router-link>
         </div>
+        <div class="col-md-6" />
         <div class="col-md-3 text-center">
           <ul class="menu">
             <li>

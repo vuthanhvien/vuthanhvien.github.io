@@ -1,10 +1,9 @@
 <template>
-  <div class="home ">
+  <div class="home">
     <Header/>
     <Intro/>
-    <Blog/>
-
-       <Pagination :pageIndex="pageIndex" :total="3" :onChangePage="onChangePage" />
+    <Blog :data="blogs"/>
+    <Pagination :pageIndex="pageIndex" :total="3" :onChangePage="onChangePage"/>
 
     <Footer/>
   </div>
@@ -16,8 +15,9 @@ import Intro from "@/components/Intro.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Blog from "@/components/Blog.vue";
-import Pagination from '@/components/Pagination.vue'
+import Pagination from "@/components/Pagination.vue";
 
+import { getPosts } from "@/service.js";
 
 export default {
   name: "home",
@@ -30,26 +30,46 @@ export default {
   },
   data() {
     return {
-      pageIndex: 1
-    }
+      pageIndex: 1,
+      blogs: []
+    };
   },
   methods: {
-    onChangePage: function (params) {
+    onChangePage: function(params) {
       this.pageIndex = params;
+    },
+    getData: function (params) {
+      const that = this;
+      getPosts().then(function(querySnapshot) {
+      that.blogs = [];
+      querySnapshot.forEach(function(doc) {
+        const data = doc.data();
+        that.blogs.push({
+          id: doc.id,
+          ...data
+        })
+      });
+      console.log(that.blogs);
+    });
     }
   },
+  created: function() {
+    this.getData();
+  }
 };
 </script>
 <style lang="scss">
 body {
-  font-family: "Cabin", sans-serif!important;
+  font-family: "Cabin", sans-serif !important;
   background: white;
 }
-p,a,span{
+p,
+a,
+span {
   font-size: 14px;
 }
-*:focus{
-  outline: 0!important;
+*:focus {
+  outline: 0 !important;
 }
 </style>
 

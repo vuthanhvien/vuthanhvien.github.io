@@ -21,11 +21,17 @@
           <a href="https://www.facebook.com/thangkubom742" target="_blank">
             <i class="fa fa-facebook"/>
           </a>
-          <a>
+          <a href="https://www.facebook.com/thangkubom742" target="_blank">
             <i class="fa fa-instagram"/>
           </a>
           <a href="https://www.youtube.com/channel/UCDqLCfHn9VMHk7bYG-xlvhw" target="_blank">
             <i class="fa fa-youtube"/>
+          </a>
+          <a href="https://www.behance.net/thangkubom" target="_blank">
+            <i class="fa fa-behance"/>
+          </a>
+          <a href="https://dribbble.com/vuthanhvien742" target="_blank">
+            <i class="fa fa-dribbble"/>
           </a>
         </p>
       </div>
@@ -105,9 +111,10 @@ export default {
   }
   .social {
     a {
+      opacity: 0.8;
       color: #444;
-      font-size: 20px;
-      margin-right: 15px;
+      font-size: 24px;
+      margin-right: 10px;
     }
   }
   .avatar {

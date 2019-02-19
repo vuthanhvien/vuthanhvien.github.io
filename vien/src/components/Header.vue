@@ -189,7 +189,7 @@ export default {
   }
 }
 .header {
-  padding-top: 25px;
+  padding-top: 15px;
   display: flex;
   border-bottom: 1px solid #ccc;
   .icon-menu {
