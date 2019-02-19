@@ -49,11 +49,21 @@
 </template>
 
 <script>
+
 export default {
   name: "Blog",
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      paging: {
+        index: 1,
+        total: 15,
+        limit: 20
+      }
+    }
+  },
 };
 </script>
 

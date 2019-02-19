@@ -8,14 +8,14 @@
         </router-link>
     </div>
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-7 offset-1">
         <h1>
           Hi! I'm
           <span>Vien Vu</span>|
         </h1>
         <h3>I'm a frontend developer</h3>
         <p>
-          <a v-for="(item, index) in tags" @click="search(item)">{{item}}</a>
+          <router-link  v-for="item in tags" :key="item"  :to="{ path: '/search', query: { s: item } }">{{item}}</router-link>
         </p>
         <p class="social">
           <a href="https://www.facebook.com/thangkubom742" target="_blank">
@@ -29,7 +29,7 @@
           </a>
         </p>
       </div>
-      <div class="col-md-5 text-right pc-avatar">
+      <div class="col-md-3 text-right pc-avatar">
         <router-link to="/whoiam">
         <div class="avatar">
           <img src="avatar.jpg">
@@ -43,9 +43,6 @@
 <script>
 export default {
   name: "Intro",
-  props: {
-    msg: String
-  },
   data() {
     return {
       tags: ['#css', '#html', '#js', '#react', '#angular']
@@ -100,6 +97,7 @@ export default {
     font-size: 13px;
     cursor: pointer;
     display: inline-block;
+    color: #444;
     &:hover {
       font-weight: 400;
       color: #ca3a5c !important;

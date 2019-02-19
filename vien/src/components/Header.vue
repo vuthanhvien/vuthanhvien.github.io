@@ -46,7 +46,7 @@
         <li>
           <div class="menu-item">
           <router-link to="/programming">
-             Programing
+             Programming
           </router-link>
           </div>
         </li>
@@ -302,7 +302,7 @@ export default {
       background: #ca3a5c;
       color: white;
       input {
-        width: 200px;
+        width: 180px;
         padding-left: 15px;
         color: white;
         &::placeholder {

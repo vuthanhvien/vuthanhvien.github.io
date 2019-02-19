@@ -1,7 +1,7 @@
 <template>
   <div class="home ">
     <Header/>
-    <br>
+   <br>
     <Blog/>
     <Pagination :pageIndex="pageIndex" :total="5" :onChangePage="onChangePage "/>
     <Footer/>

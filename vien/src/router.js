@@ -42,8 +42,24 @@ export default new Router({
       component: () => import('./views/Hobby.vue')
     },
     {
+      path: '/hobby/travel',
+      name: 'travel',
+      component: () => import('./views/Travel.vue')
+    },
+    {
+      path: '/hobby/film',
+      name: 'film',
+      component: () => import('./views/Film.vue')
+    },
+    {
+      path: '/hobby/book',
+      name: 'book',
+      component: () => import('./views/Book.vue')
+    },
+    {
       path: '/search',
       name: 'search',
+     
       component: () => import('./views/Search.vue')
     },
   ]
