@@ -5,7 +5,10 @@
         <div class="blog-detail">
           <div class="content">
             <p class="hashtag">#Programming</p>
+            <router-link to="/post/why-we" >
+
             <h5>Why We Trust Apple and Google More Than Our Governments</h5>
+            </router-link>
             <p class="time">Posted 5 min ago</p>
           </div>
           <div class="overflow"/>

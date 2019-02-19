@@ -1,51 +1,59 @@
 <template>
   <div class="header container">
+    <div class="icon-menu">
+      <i class="fa fa-bars" />
+    </div>
+    
     <div class="logo">
-      <a href="/">
-        <img src="logo.png">
-      </a>
+       <router-link to="/">
+        <img src="/logo.png">
+      </router-link>
     </div>
     <div class="menu">
       <ul>
         <li>
-          <div class="sub active">
-            <a href="/">Home</a>
+          <div class="menu-item">
+          <router-link to="/home">
+             Home
+          </router-link>
           </div>
         </li>
         <li>
-          <div class="sub">
-            <a href="/programming">Programing</a>
+          <div class="menu-item">
+          <router-link to="/programming">
+             Programing
+          </router-link>
           </div>
         </li>
         <li>
-          <div class="sub">
-            <a href="/hobby">
+          <div class="menu-item">
+            <router-link to="/hobby">
               Hobby
               <i class="fa fa-chevron-down"/>
-            </a>
+            </router-link>
             <div class="sub-menu">
               <ul>
                 <li>
-                  <a>Photographer</a>
+                  <router-link to="/hobby/travel">Travel</router-link>
                 </li>
                 <li>
-                  <a>Film review</a>
+                  <router-link to="/hobby/film">Film review</router-link>
                 </li>
                 <li>
-                  <a>Book review</a>
+                  <router-link to="/hobby/book">Book review</router-link>
                 </li>
               </ul>
             </div>
           </div>
         </li>
         <li>
-          <div class="sub">
-            <a href="/whoiam">Who am I?</a>
+          <div class="menu-item">
+                  <router-link to="/whoiam">Who I am?</router-link>
           </div>
         </li>
         <li>
-          <div class="sub">
-            <a href="/contact">Contact</a>
+          <div class="menu-item">
+                  <router-link to="/contact">Contact</router-link>
           </div>
         </li>
       </ul>
@@ -67,10 +75,38 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
+@media only screen and (max-width: 992px) {
+  .icon-menu{
+    display: block!important;
+  }
+  .logo{
+    flex: auto;
+  }
+  .menu{
+    display: none!important;
+  }
+}
+
 .header {
   padding-top: 25px;
   display: flex;
   border-bottom: 1px solid #ccc;
+  .icon-menu{
+    display: none;
+    font-size: 26px;
+    padding: 9px;
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    // background: #f8f8f8;
+    // border-radius: 25px;
+    &:hover{
+      //  background: #ca3a5c;
+      // color: white;
+    }
+
+  }
   .logo {
     padding: 5px;
     img {
@@ -95,35 +131,38 @@ export default {
             font-size: 10px;
           }
         }
-        .sub {
+        .menu-item {
           position: relative;
-          cursor: pointer;
-
-          padding: 15px 25px;
-          &:hover {
-            background: #f4f4f4;
-            .sub-menu {
-              display: block;
-            }
-            & > a {
+          margin: 13px 0;
+          & > a {
+            padding: 15px 25px;
+            cursor: pointer;
+            &.router-link-active,
+            &:hover {
+              background: #f4f4f4;
               color: #ca3a5c;
               text-decoration: underline;
             }
           }
-          &.active {
-            & > a {
+          &:hover {
+            .sub-menu {
+              display: block;
+            }
+            &>a{
+              background: #f4f4f4;
               color: #ca3a5c;
               text-decoration: underline;
             }
           }
         }
         .sub-menu {
+          z-index: 3;
           display: none;
           position: absolute;
           background: white;
           // padding: 15px 25px;
           border: 1px solid #ccc;
-          top: 54px;
+          top: 37px;
           left: 0px;
           min-width: 250px;
           ul {
@@ -131,14 +170,16 @@ export default {
             list-style: none;
             padding: 0px;
             li {
-              &:hover {
-                background: #f4f4f4;
-                a {
+              a {
+                display: block;
+                &.router-link-exact-active,
+                &:hover {
+                  background: #f4f4f4;
                   text-decoration: underline;
                   color: #ca3a5c;
                 }
+                padding: 10px 25px;
               }
-              padding: 10px 25px;
             }
           }
         }
