@@ -94,12 +94,13 @@ export default {
   border-bottom: 1px solid #ccc;
   .icon-menu{
     display: none;
-    font-size: 26px;
-    padding: 9px;
+      font-size: 26px;
+    padding: 3px;
     cursor: pointer;
     height: 45px;
     width: 45px;
-    // background: #f8f8f8;
+    background: #f8f8f8;
+    text-align: center;
     // border-radius: 25px;
     &:hover{
       //  background: #ca3a5c;

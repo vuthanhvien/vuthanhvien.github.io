@@ -1,9 +1,16 @@
 <template>
   <div class="intro container">
+      <div class="text-center mobile-avatar">
+      <router-link to="/whoiam">
+        <div class="avatar">
+          <img src="avatar.jpg">
+        </div>
+        </router-link>
+    </div>
     <div class="row">
       <div class="col-md-7">
         <h1>
-          Hello! I'm
+          Hi! I'm
           <span>Vien Vu</span>|
         </h1>
         <h3>I'm a frontend developer</h3>
@@ -28,7 +35,7 @@
           </a>
         </p>
       </div>
-      <div class="col-md-5 text-right">
+      <div class="col-md-5 text-right pc-avatar">
         <router-link to="/whoiam">
         <div class="avatar">
           <img src="avatar.jpg">
@@ -50,6 +57,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@media only screen and (max-width: 992px) {
+  .mobile-avatar {
+    display: block !important;
+  }
+  .pc-avatar{
+    display: none!important;
+  }
+  .social{
+    text-align: center;
+  }
+}
+.mobile-avatar {
+  display: none;
+      margin-top: -105px;
+    padding-bottom: 50px;
+}
 .intro {
   padding-top: 150px;
   padding-bottom: 120px;
@@ -68,8 +91,9 @@ export default {
     color: #444;
   }
   a {
-    font-weight: 200;
+    font-weight: 300;
     padding-right: 5px;
+    font-size: 13px;
     cursor: pointer;
     display: inline-block;
     &:hover {
@@ -80,7 +104,7 @@ export default {
   .social {
     a {
       color: #444;
-      font-size: 18px;
+      font-size: 20px;
       margin-right: 15px;
     }
   }
