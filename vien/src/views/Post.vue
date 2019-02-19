@@ -42,6 +42,8 @@ export default {
   background-repeat: no-repeat;
   min-height: 500px;
   padding-top: 100px;
+  
+     background-size: cover;
   .content {
     padding-top: 230px;
     background-image: linear-gradient(

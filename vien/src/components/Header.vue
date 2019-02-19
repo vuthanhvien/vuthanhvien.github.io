@@ -1,9 +1,34 @@
 <template>
-  <div class="header container">
-    <div class="icon-menu">
+<div >
+    <div class="mobile-menu" :class="{show: menuOpen}" >
+      <ul @click="$event.preventDefault()" >
+        <li>
+          <router-link to="/">
+          Home
+          </router-link>
+          </li>
+        <li> <router-link to="/programming">
+          Programming
+          </router-link></li>
+           <li> <router-link to="/hobby">
+          Hobby
+          </router-link></li>
+           <li> <router-link to="/whoiam">
+          Who I am?
+          </router-link></li>
+           <li> <router-link to="/contact">
+          Contact
+          </router-link></li>
+       
+      </ul>
+      <div class="close" @click="toggleMenu"/> 
+    </div>
+
+  <div class="header container" >
+  
+    <div class="icon-menu" @click="toggleMenu">
       <i class="fa fa-bars" />
     </div>
-    
     <div class="logo">
        <router-link to="/">
         <img src="/logo.png">
@@ -58,9 +83,11 @@
         </li>
       </ul>
     </div>
-    <div class="search">
+    <div class="search" :class="{active: keySearch}">
       <i class="fa fa-search"/>
+      <input @keyup.enter="search" v-model="keySearch" placeholder="Enter search key" />
     </div>
+  </div>
   </div>
 </template>
 
@@ -69,44 +96,107 @@ export default {
   name: "Header",
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      menuOpen: false,
+      keySearch: ""
+    };
+  },
+  methods: {
+    toggleMenu: function() {
+      this.menuOpen = !this.menuOpen;
+    },
+    search: function() {
+      this.$router.push({ name: 'search', query: { s: this.keySearch } })
+    },
+    doSearch(){
+      this.keySearch = this.$route.query.s;
+    }
+  },
+  watch: {
+    "$route.query.s"() {
+      this.doSearch();
+    }
+  },created() {
+    this.doSearch();
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
 @media only screen and (max-width: 992px) {
-  .icon-menu{
-    display: block!important;
+  .icon-menu {
+    display: block !important;
   }
-  .logo{
+  .logo {
     flex: auto;
   }
-  .menu{
-    display: none!important;
+  .menu {
+    display: none !important;
   }
 }
+.mobile-menu {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: #0000006b;
+  left: 0;
+  z-index: -1;
+  .close {
+    top: 0;
+    right: 0;
+    display: block;
+    position: fixed;
+    width: 20%;
+    height: 100%;
+  }
+  &.show {
+    z-index: 5;
+    opacity: 1;
+    pointer-events: initial;
+    ul {
+      left: 0;
+    }
+  }
 
+  ul {
+    transition: left ease 0.3s;
+    padding: calc(50vh - 92px) 35px;
+    left: -100%;
+    background: white;
+    margin: 0;
+    list-style: none;
+    display: block;
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    line-height: 37px;
+    li {
+      a {
+        font-size: 18px;
+        font-weight: bold;
+        color: #444;
+        &.router-link-exact-active {
+          color: #ca3a5c;
+        }
+      }
+    }
+  }
+}
 .header {
   padding-top: 25px;
   display: flex;
   border-bottom: 1px solid #ccc;
-  .icon-menu{
+  .icon-menu {
     display: none;
-      font-size: 26px;
-    padding: 3px;
+    font-size: 25px;
+    padding-top: 7px;
     cursor: pointer;
-    height: 45px;
-    width: 45px;
-    background: #f8f8f8;
-    text-align: center;
-    // border-radius: 25px;
-    &:hover{
-      //  background: #ca3a5c;
-      // color: white;
-    }
-
   }
   .logo {
     padding: 5px;
@@ -149,7 +239,7 @@ export default {
             .sub-menu {
               display: block;
             }
-            &>a{
+            & > a {
               background: #f4f4f4;
               color: #ca3a5c;
               text-decoration: underline;
@@ -191,12 +281,34 @@ export default {
     padding: 15px;
     cursor: pointer;
     height: 45px;
-    width: 45px;
+    min-width: 45px;
     border-radius: 25px;
     background: #f4f4f4;
+    input {
+      width: 0;
+      font-weight: bold;
+      border: 0;
+      padding-left: 0px;
+      margin-top: -15px;
+      transition: width ease 0.3s;
+      background: transparent;
+      height: 45px;
+      &::placeholder {
+        color: #999;
+      }
+    }
+     &.active ,
     &:hover {
       background: #ca3a5c;
       color: white;
+      input {
+        width: 200px;
+        padding-left: 15px;
+        color: white;
+        &::placeholder {
+        color: #fff6;
+      }
+      }
     }
   }
 }

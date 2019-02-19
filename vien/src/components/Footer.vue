@@ -2,15 +2,18 @@
   <div class="footer ">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-9 logo">
           <router-link to="/">
-            <img src="/logo.png" />
+            <img src="/logo-white.png" />
           </router-link>
         </div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-3 text-center">
           <ul class="menu">
-           
+            <li>
+              <router-link to="/home">
+                Home
+              </router-link>
+            </li>
              <li>
               <router-link to="/programming">
                 Programming
@@ -52,9 +55,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .footer {
-  padding: 50px 0 20px 0;
+  padding: 20px 0 20px 0;
   background: #444;
   .menu{
+     padding: 30px 0;
     list-style: none;
     li{
       display: block;
@@ -64,8 +68,11 @@ export default {
       font-weight: bold;
     }
   }
+  .logo{
+    padding: 40px 0;
   img{
-    width: 100%;
+    height: 80px;
+  }
   }
   p {
     color: white;

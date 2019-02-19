@@ -15,13 +15,7 @@
         </h1>
         <h3>I'm a frontend developer</h3>
         <p>
-          <a>#CSS</a>
-          <a>#HTML</a>
-          <a>#JS</a>
-          <a>#REACT</a>
-          <a>#ANGULAR</a>
-          <a>#VUE</a>
-          <a>#NODE</a>
+          <a v-for="(item, index) in tags" @click="search(item)">{{item}}</a>
         </p>
         <p class="social">
           <a href="https://www.facebook.com/thangkubom742" target="_blank">
@@ -51,7 +45,17 @@ export default {
   name: "Intro",
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      tags: ['#css', '#html', '#js', '#react', '#angular']
+    }
+  },
+  methods: {
+    search: function(key) {
+      this.$router.push({ name: 'search', query: { s: key } })
+    },
+  },
 };
 </script>
 
@@ -78,11 +82,11 @@ export default {
   padding-bottom: 120px;
   h1 {
     text-align: left;
-    font-size: 48px;
+    font-size: 42px;
     color: #909090;
     font-weight: 200;
     span {
-      font-size: 48px;
+      font-size: 42px;
       font-weight: bold;
       color: #ca3a5c;
     }

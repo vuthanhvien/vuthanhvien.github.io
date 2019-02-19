@@ -41,5 +41,10 @@ export default new Router({
       name: 'hobby',
       component: () => import('./views/Hobby.vue')
     },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('./views/Search.vue')
+    },
   ]
 })

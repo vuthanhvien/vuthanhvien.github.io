@@ -27,9 +27,13 @@ export default {
 <style lang="scss">
 body {
   font-family: "Cabin", sans-serif!important;
+  background: white;
 }
 p,a,span{
   font-size: 14px;
+}
+*:focus{
+  outline: 0!important;
 }
 </style>
 
