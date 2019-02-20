@@ -11,7 +11,7 @@
       <div class="col-md-7 offset-1">
         <h1>
           Hi! I'm
-          <span>Vien Vu</span>|
+          <span>{{title}}</span>|
         </h1>
         <h3>I'm a frontend developer</h3>
         <p>
@@ -45,14 +45,46 @@ export default {
   name: "Intro",
   data() {
     return {
-      tags: ['#css', '#html', '#js', '#react', '#angular']
-    }
+      tags: ["#css", "#html", "#js", "#react", "#angular"],
+      titles: ["Vien Vu", "Frontend developer", "UX/UI designer"],
+      title: ""
+    };
   },
   methods: {
     search: function(key) {
-      this.$router.push({ name: 'search', query: { s: key } })
+      this.$router.push({ name: "search", query: { s: key } });
     },
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    },
+    async change() {
+      const strings = this.titles;
+      while (true) {
+        for (let j = 0; j < strings.length; j++) {
+          const string = strings[j];
+          for (let i = 0; i < string.length; i++) {
+            await this.sleep(150);
+            this.title = this.title + string[i];
+          }
+          await this.sleep(3000);
+
+          for (let i = string.length; i > 0; i--) {
+            await this.sleep(80);
+            this.title = this.title.slice(0, -1);
+          }
+        }
+      }
+    }
   },
+  created() {
+    const strings = this.titles;
+    let total = 0;
+    for (let j = 0; j < strings.length; j++) {
+      total = total + strings[j].length;
+    }
+    console.log(total);
+    this.change();
+  }
 };
 </script>
 
@@ -62,17 +94,17 @@ export default {
   .mobile-avatar {
     display: block !important;
   }
-  .pc-avatar{
-    display: none!important;
+  .pc-avatar {
+    display: none !important;
   }
-  .social{
+  .social {
     text-align: center;
   }
 }
 .mobile-avatar {
   display: none;
-      margin-top: -105px;
-    padding-bottom: 50px;
+  margin-top: -105px;
+  padding-bottom: 50px;
 }
 .intro {
   padding-top: 150px;
