@@ -12,18 +12,19 @@
             >#{{tag}}</router-link>
           </p>
           <h2>
-            <strong>{{data.title}}</strong>
+            <strong>{{data.name}}</strong>
           </h2>
           <p
             class="time"
             v-if="data.createdAt"
-          >Post {{data.createdAt.seconds | formatDate}} by {{data.creator}}</p>
+          >Post {{data.createdAt | formatDate}} by {{data.author && data.author.name}}</p>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="main-content col-md-10 offset-md-1">
-        {{data.content}}
+       
+        <VueMarkdown>{{data.content}}</VueMarkdown>
       </div>
     </div>
     <Footer/>
@@ -35,12 +36,15 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import { getPost } from "@/service.js";
+import VueMarkdown from 'vue-markdown'
+
 
 export default {
   name: "home",
   components: {
     Header,
-    Footer
+    Footer, 
+    VueMarkdown
   },
   data() {
     return {
@@ -51,23 +55,18 @@ export default {
     getData: function() {
       const that = this;
       const id = this.$route.params.id;
-      getPost(id).then(function(doc) {
-        if (doc.exists) {
-          that.data = doc.data();
-
-          const tags = [];
-          console.log(that.data);
-          Object.keys(that.data).forEach(key => {
-            if (key.indexOf("tag_") > -1) {
-              tags.push(key.substring(4));
-            }
-          });
-          that.data.tags = tags;
-        }
+      getPost(id).then(function(data) {
+          if(data.tags){
+            data.tags = data.tags.split(',');
+          }else{
+            data.tags  = []
+          }
+          that.data = data;
       });
     }
   },
   created: function() {
+    console.log(this)
     this.getData();
   }
 };

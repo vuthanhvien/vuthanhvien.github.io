@@ -12,9 +12,9 @@
               >#{{tag}}</router-link>
             </p>
             <router-link :to="'/post/'+post.id">
-              <h5>{{post.title}}</h5>
+              <h5>{{post.name}}</h5>
             </router-link>
-            <p class="time">Posted {{post.createdAt.seconds | formatDate}} by {{post.creator}}</p>
+            <p class="time" v-if="post.createdAt">Posted {{post.createdAt | formatDate}} by {{post.author && post.author.name}}</p>
           </div>
           <div class="overflow" :style="{background: post.color}"/>
         </div>
@@ -41,13 +41,12 @@ export default {
   watch: {
     data() {
       console.log(this.data);
-      this.data.forEach(item => {
-        item.tags = [];
-        Object.keys(item).forEach(key => {
-          if (key.indexOf("tag_") > -1) {
-            item.tags.push(key.substring(4));
-          }
-        });
+      this.data.map(item => {
+        if (item.tags) {
+          item.tags = item.tags.split(",");
+        } else {
+          item.tags = [];
+        }
       });
     }
   }
@@ -73,7 +72,7 @@ export default {
       .hashtag {
         font-weight: bold;
         color: white;
-        a{
+        a {
           color: white;
           margin-right: 5px;
         }

@@ -38,15 +38,15 @@ export default {
     onChangePage: function(params) {
       this.pageIndex = params;
     },
-    getData: function (params) {
+    getData: function () {
       const that = this;
-      getPosts().then(function(querySnapshot) {
+      getPosts().then((data) => {
       that.blogs = [];
-      querySnapshot.forEach(function(doc) {
-        const data = doc.data();
+      data.map((doc)=> {
+        console.log(doc);
         that.blogs.push({
           id: doc.id,
-          ...data
+          ...doc
         })
       });
       console.log(that.blogs);

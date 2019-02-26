@@ -21,7 +21,7 @@
           <a href="https://www.facebook.com/thangkubom742" target="_blank">
             <i class="fa fa-facebook"/>
           </a>
-          <a href="https://www.facebook.com/thangkubom742" target="_blank">
+          <a href="https://www.instagram.com/vuthanhvien742/" target="_blank">
             <i class="fa fa-instagram"/>
           </a>
           <a href="https://www.youtube.com/channel/UCDqLCfHn9VMHk7bYG-xlvhw" target="_blank">
@@ -65,7 +65,7 @@ export default {
     },
     async change() {
       const strings = this.titles;
-      while (true) {
+      while(strings) {
         for (let j = 0; j < strings.length; j++) {
           const string = strings[j];
           for (let i = 0; i < string.length; i++) {
