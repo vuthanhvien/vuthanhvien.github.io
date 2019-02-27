@@ -46,7 +46,10 @@ export const getPosts = async (page = 1) => {
         variables: {limit, orderBy, skip, where},
         fetchPolicy: 'network-only'
     }).then(re=>{
-        posts = JSON.parse(JSON.stringify(re.data.data))
+        posts = JSON.parse(JSON.stringify(re.data.data));
+        posts.list.map(item=>{
+            item.tags = item.tags ? item.tags.split(',')  : [];
+        })
     })
     return posts;
 }
@@ -67,8 +70,8 @@ export const getSearchPosts = async (page = 1, keySearch = '') => {
                     list{
                         id
                         name
-                        content
                         background
+                        content
                         author{
                             id
                             name
@@ -87,6 +90,9 @@ export const getSearchPosts = async (page = 1, keySearch = '') => {
         fetchPolicy: 'network-only'
     }).then(re=>{
         posts = JSON.parse(JSON.stringify(re.data.data))
+        posts.list.map(item=>{
+            item.tags = item.tags ? item.tags.split(',')  : [];
+        })
     })
     return posts;
 }

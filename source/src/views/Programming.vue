@@ -1,26 +1,62 @@
 <template>
-  <div class="home ">
-    <Header/>
-   <br>
-    <Blog :data="blogs"/>
-    <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
-    <Footer/>
-  </div>
+    <div class="container">
+      <br>
+    <div class="row">
+      <div class="col-md-10">
+          <div>
+            <div>
+            <img :src="first.background" style="width: 100%" />
+          </div>
+            <br>
+            <router-link class="pointer" :to="'/post/'+first.id">
+              <h3>{{first.name}}</h3>
+            </router-link>
+            <p>{{first.content && first.content.slice(0, 250)}}...</p>
+            <router-link v-for="tag of first.tags" :key="tag" :to="{path: '/search', query: {s: tag}}"  class="pointer">
+             &nbsp;#{{tag}}&nbsp;
+            </router-link >
+             <p class="time" v-if="first.createdAt">
+               Posted {{first.createdAt | formatDate}} by {{first.author && first.author.name}}
+             </p>
+
+          </div>
+          <br>
+          <br>
+          <h5>LATEST</h5>
+            <Category :data="blogs"/>
+            <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
+      </div>
+      <div class="col-md-2">
+          <h5>Book review</h5>
+          <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <br>
+          <h5>Tags</h5>
+          <ul>
+              <li v-for="tag of tags" :key="tag">
+                  <router-link :to="{path: '/search', query: {s: tag}}"  class="pointer">#{{tag}}</router-link >
+              </li>
+          </ul>
+          <br>
+          <h5>Authors</h5>
+          <ul>
+            <li v-for="author of authors" :key="author">
+                  <router-link :to="{path: '/search', query: {s: author}}"  class="pointer">#{{author}}</router-link >
+              </li>
+          </ul>
+      </div>
+    </div>
+    </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import Blog from "@/components/Blog.vue";
+import Category from "@/components/Category.vue";
 import Pagination from "@/components/Pagination.vue";
 import { getSearchPosts } from "@/service.js";
 
 export default {
-   components: {
-    Header,
-    Footer,
-    Blog,
+  components: {
+    Category,
     Pagination
   },
   data() {
@@ -28,20 +64,23 @@ export default {
       keySearch: "",
       blogs: [],
       pageIndex: 1,
-      total: 0
+      total: 0,
+      first: {},
+      tags: ["flutter", "frontend", "js", "html", "css"],
+      authors: ["Viên Vũ"]
     };
   },
   methods: {
     onChangePage() {},
     doSearch() {
-      this.keySearch = 'programming'
+      this.keySearch = "programming";
       const that = this;
-      console.log("doSearch");
       getSearchPosts(this.pageIndex, this.keySearch).then(data => {
         that.blogs = [];
         const dataArr = data.list;
+        that.first = JSON.parse(JSON.stringify(data.list[0]));
         console.log("getSearchPosts >>>>>>>>>>>>>", data);
-        that.total = data.total  / 20;
+        that.total = data.total / 20;
         dataArr.map(doc => {
           that.blogs.push({
             id: doc.id,
@@ -56,12 +95,10 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-body {
-  font-family: "Cabin", sans-serif!important;
-}
-p,a,span{
-  font-size: 14px;
+<style lang="scss" scoped>
+h3 {
+  font-weight: bold;
+  color: #ca3a5c;
 }
 </style>
 

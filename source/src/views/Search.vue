@@ -1,32 +1,32 @@
 <template>
   <div class="search ">
-    <Header/>
     <br>
     <br>
-    <div class="container">
+    <div>
+      <div class="container">
         <h2>Search for: <strong>{{keySearch}}</strong></h2>
+      </div>
+      </div>
+    <div class="container">
+        <Category :data="blogs"/>
+        <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
     </div>
     <br>
-    <Blog :data="blogs"/>
-    <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
-    <Footer/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import Blog from "@/components/Blog.vue";
+import Category from "@/components/Category.vue";
+import Pagination from "@/components/Pagination.vue";
 
 import { getSearchPosts } from "@/service.js";
 
 export default {
   name: "search",
   components: {
-    Header,
-    Footer,
-    Blog
+    Category,
+    Pagination
   },
   data() {
     return {

@@ -42,13 +42,7 @@ export default {
   watch: {
     data() {
       this.data.map((item, index) => {
-        console.log(item);
         item.width = this.skeleton[index % this.skeleton.length];
-        if (item.tags) {
-          item.tags = item.tags.split(",");
-        } else {
-          item.tags = [];
-        }
       });
     }
   }
@@ -57,14 +51,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.main-content{
-  p{
-    text-align: justify;
-  }
-  h1,h2,h3{
-    font-weight: bold;
-  }
-}
+
 .blog {
   .blog-detail {
     margin-bottom: 20px;

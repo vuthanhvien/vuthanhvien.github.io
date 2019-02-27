@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         changePage: function(item){
-            if(item >= 1 && item <= this.total){
+            if(item >= 1 && item <= this.total / 20){
             // this.pageIndex = item;
             // this.updatePage();
             this.onChangePage(item)
@@ -31,7 +31,7 @@ export default {
         },
         updatePage: function(){
             const items = [];
-            for(let i = 1; i <= this.total; i++){
+            for(let i = 1; i <= this.total / 20; i++){
                 if(i > this.pageIndex - 3 && i < this.pageIndex + 3 ){
                     items.push(i)
                 }

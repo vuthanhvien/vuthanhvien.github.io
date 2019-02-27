@@ -1,6 +1,5 @@
 <template>
   <div class="post">
-    <Header/>
     <div class="cover" :style="{'background-image': `url(`+ data.background+`)`}">
       <div class="content">
         <div class="container">
@@ -13,40 +12,55 @@
           </p>
           <h2>
             <strong>{{data.name}}</strong>
+              <b-button class="pull-right" v-b-modal.modal1 >
+          <i class="fa fa-pencil"/>
+        </b-button>
           </h2>
           <p
             class="time"
             v-if="data.createdAt"
-          >Post {{data.createdAt | formatDate}} by {{data.author && data.author.name}}</p>
+          >Posted {{data.createdAt | formatDate}} by {{data.author && data.author.name}}</p>
+           <a class="pointer text-white" href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+        <i class="fa fa-facebook" style="font-size: 28px" />
+      </a>
         </div>
       </div>
     </div>
     <div class="container">
       <br>
       <br>
-      <div class="main-content col-md-10 offset-md-1">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
         <VueMarkdown :source='data.content'></VueMarkdown>
-      </div>
+    </div>
+    </div>
       <br>
       <br>
     </div>
-    <Footer/>
+    <b-modal size="slg" id="modal1" title="Edit post">
+      <div class="row">
+        <div class="col-md-6">
+          <textarea style="width: 100%; height: 900px" v-model="data.content" ></textarea>
+        </div>
+        <div class="col-md-6">
+          <div style=" height: 900px; overflow: auto">
+          <VueMarkdown :source='data.content'></VueMarkdown>
+            
+          </div>
+        </div>
+      </div>
+  </b-modal>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
 import { getPost } from "@/service.js";
-import VueMarkdown from 'vue-markdown'
-
+import VueMarkdown from "vue-markdown";
 
 export default {
   name: "home",
   components: {
-    Header,
-    Footer, 
     VueMarkdown
   },
   data() {
@@ -55,26 +69,59 @@ export default {
     };
   },
   methods: {
+    edit() {},
     getData: function() {
       const that = this;
       const id = this.$route.params.id;
       getPost(id).then(function(data) {
-          if(data.tags){
-            data.tags = data.tags.split(',');
-          }else{
-            data.tags  = []
-          }
-          that.data = data;
+        if (data.tags) {
+          data.tags = data.tags.split(",");
+        } else {
+          data.tags = [];
+        }
+        that.data = data;
       });
     }
   },
   created: function() {
-    console.log(this)
+    console.log(this);
     this.getData();
   }
 };
 </script>
 <style lang="scss">
+.modal-slg {
+  width: 90%;
+  max-width: 90%;
+}
+.main-content {
+  p {
+    text-align: justify;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: bold;
+  }
+  pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  img {
+    width: 100%;
+  }
+}
 .cover {
   background-repeat: no-repeat;
   min-height: 500px;
@@ -89,8 +136,8 @@ export default {
       rgba(0, 0, 0, 0.8)
     );
     height: 400px;
-    .hashtag{
-      a{
+    .hashtag {
+      a {
         color: white;
         font-weight: bold;
         margin-right: 5px;

@@ -1,19 +1,14 @@
 <template>
   <div class="home">
-    <Header/>
     <Intro/>
     <Blog :data="blogs"/>
     <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
-
-    <Footer/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Intro from "@/components/Intro.vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
 import Blog from "@/components/Blog.vue";
 import Pagination from "@/components/Pagination.vue";
 
@@ -23,8 +18,6 @@ export default {
   name: "home",
   components: {
     Intro,
-    Header,
-    Footer,
     Blog,
     Pagination
   },
