@@ -24,7 +24,7 @@
     <div class="container">
       <div class="main-content col-md-10 offset-md-1">
        
-        <VueMarkdown>{{data.content}}</VueMarkdown>
+        <VueMarkdown :source='data.content'></VueMarkdown>
       </div>
     </div>
     <Footer/>
