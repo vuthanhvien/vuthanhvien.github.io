@@ -1,9 +1,9 @@
 <template>
   <div class="home ">
     <Header/>
-    <br>
-    <Blog/>
-    <Pagination :pageIndex="pageIndex" :total="5" :onChangePage="onChangePage "/>
+   <br>
+    <Blog :data="blogs"/>
+    <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
     <Footer/>
   </div>
 </template>
@@ -14,9 +14,10 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Blog from "@/components/Blog.vue";
 import Pagination from "@/components/Pagination.vue";
+import { getSearchPosts } from "@/service.js";
 
 export default {
-  components: {
+   components: {
     Header,
     Footer,
     Blog,
@@ -24,14 +25,35 @@ export default {
   },
   data() {
     return {
-      pageIndex: 1
-    }
+      keySearch: "",
+      blogs: [],
+      pageIndex: 1,
+      total: 0
+    };
   },
   methods: {
-    onChangePage : function (params) {
-      this.pageIndex = params;
+    onChangePage() {},
+    doSearch() {
+      this.keySearch = 'programming'
+      const that = this;
+      console.log("doSearch");
+      getSearchPosts(this.pageIndex, this.keySearch).then(data => {
+        that.blogs = [];
+        const dataArr = data.list;
+        console.log("getSearchPosts >>>>>>>>>>>>>", data);
+        that.total = data.total  / 20;
+        dataArr.map(doc => {
+          that.blogs.push({
+            id: doc.id,
+            ...doc
+          });
+        });
+      });
     }
   },
+  created() {
+    this.doSearch();
+  }
 };
 </script>
 <style lang="scss">

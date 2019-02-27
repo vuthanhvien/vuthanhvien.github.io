@@ -7,7 +7,7 @@
         <h2>Search for: <strong>{{keySearch}}</strong></h2>
     </div>
     <br>
-      <Blog :data="blogs"/>
+    <Blog :data="blogs"/>
     <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
     <Footer/>
   </div>
@@ -33,21 +33,19 @@ export default {
       keySearch: "",
       blogs: [],
       pageIndex: 1,
-      total: 0,
+      total: 0
     };
   },
   methods: {
-    onChangePage(){
-
-    },
+    onChangePage() {},
     doSearch() {
       this.keySearch = this.$route.query.s;
       const that = this;
-      console.log('doSearch')
+      console.log("doSearch");
       getSearchPosts(this.pageIndex, this.keySearch).then(data => {
         that.blogs = [];
         const dataArr = data.list;
-        console.log('getSearchPosts >>>>>>>>>>>>>', data)
+        console.log("getSearchPosts >>>>>>>>>>>>>", data);
         that.total = data.total;
         dataArr.map(doc => {
           that.blogs.push({

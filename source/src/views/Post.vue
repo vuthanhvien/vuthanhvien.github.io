@@ -22,10 +22,13 @@
       </div>
     </div>
     <div class="container">
+      <br>
+      <br>
       <div class="main-content col-md-10 offset-md-1">
-       
         <VueMarkdown :source='data.content'></VueMarkdown>
       </div>
+      <br>
+      <br>
     </div>
     <Footer/>
   </div>

@@ -35,13 +35,15 @@ export default {
         index: 1,
         total: 15,
         limit: 20
-      }
+      },
+      skeleton: [8, 4, 6, 3, 3, 7, 5, 6, 6, 4, 8, 6, 3, 3, 3, 3, 3, 6]
     };
   },
   watch: {
     data() {
-      console.log(this.data);
-      this.data.map(item => {
+      this.data.map((item, index) => {
+        console.log(item);
+        item.width = this.skeleton[index % this.skeleton.length];
         if (item.tags) {
           item.tags = item.tags.split(",");
         } else {
@@ -54,7 +56,15 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
+.main-content{
+  p{
+    text-align: justify;
+  }
+  h1,h2,h3{
+    font-weight: bold;
+  }
+}
 .blog {
   .blog-detail {
     margin-bottom: 20px;
@@ -79,7 +89,7 @@ export default {
       }
       .time {
         color: white;
-        opacity: 0.7;
+        opacity: 0.8;
         font-size: 12px;
       }
       h5 {
