@@ -16,10 +16,14 @@ const apolloClient = new ApolloClient({
 export const getPosts = async (page = 1) => {
     console.log(page);
     let posts = [];
+    const limit = 20;
+    const orderBy = 'createAt_desc';
+    const skip = (page - 1)* limit;
+    const where = {};
     await apolloClient.query({
         query: gql`
-            {
-                data:posts{
+        query getPosts($where: Json, $limit: Int, $skip: Int, $orderBy: String){
+                data:posts(where: $where, limit: $limit, skip: $skip, orderBy: $orderBy){
                     list{
                         id
                         name
@@ -35,16 +39,57 @@ export const getPosts = async (page = 1) => {
                         tags
                         width
                     }
+                    total
                 }
             }
         `,
+        variables: {limit, orderBy, skip, where},
         fetchPolicy: 'network-only'
     }).then(re=>{
-        posts = JSON.parse(JSON.stringify(re.data.data.list))
+        posts = JSON.parse(JSON.stringify(re.data.data))
     })
     return posts;
 }
-
+export const getSearchPosts = async (page = 1, keySearch = '') => {
+    console.log(page);
+    let posts = [];
+    const limit = 20;
+    const orderBy = 'createAt_desc';
+    const skip = (page - 1)* limit;
+    const where = {
+        tags_like: keySearch
+    };
+    
+    await apolloClient.query({
+        query: gql`
+            query getPosts($where: Json, $limit: Int, $skip: Int, $orderBy: String){
+                data:posts(where: $where, limit: $limit, skip: $skip, orderBy: $orderBy){
+                    list{
+                        id
+                        name
+                        content
+                        background
+                        author{
+                            id
+                            name
+                        }
+                        createdAt
+                        updatedAt
+                        color
+                        tags
+                        width
+                    }
+                    total
+                }
+            }
+        `,
+        variables: {limit, orderBy, skip, where},
+        fetchPolicy: 'network-only'
+    }).then(re=>{
+        posts = JSON.parse(JSON.stringify(re.data.data))
+    })
+    return posts;
+}
 export const getPost = async (id) => {
     let post = {}
     await apolloClient.query({

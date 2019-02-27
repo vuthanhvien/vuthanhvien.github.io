@@ -3,7 +3,7 @@
     <Header/>
     <Intro/>
     <Blog :data="blogs"/>
-    <Pagination :pageIndex="pageIndex" :total="3" :onChangePage="onChangePage"/>
+    <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
 
     <Footer/>
   </div>
@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       pageIndex: 1,
-      blogs: []
+      blogs: [],
+      total: 0
     };
   },
   methods: {
@@ -40,9 +41,11 @@ export default {
     },
     getData: function () {
       const that = this;
-      getPosts().then((data) => {
+      getPosts(this.pageIndex).then((data) => {
       that.blogs = [];
-      data.map((doc)=> {
+      that.total = Math.floor(data.total / 20);
+      const dataArr = data.list;
+      dataArr.map((doc)=> {
         console.log(doc);
         that.blogs.push({
           id: doc.id,

@@ -15,7 +15,7 @@
         </h1>
         <h3>I'm a frontend developer</h3>
         <p>
-          <router-link  v-for="item in tags" :key="item"  :to="{ path: '/search', query: { s: item } }">{{item}}</router-link>
+          <router-link  v-for="item in tags" :key="item"  :to="{ path: '/search', query: { s: item } }">#{{item}}</router-link>
         </p>
         <p class="social">
           <a href="https://www.facebook.com/thangkubom742" target="_blank">
@@ -51,7 +51,7 @@ export default {
   name: "Intro",
   data() {
     return {
-      tags: ["#css", "#html", "#js", "#react", "#angular"],
+      tags: ["programming", "travel", "book", "film"],
       titles: ["Vien Vu", "Frontend developer", "UX/UI designer"],
       title: ""
     };
