@@ -2,11 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Container from './views/Container.vue'
+import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   scrollBehavior:  ()=>{
     return { x: 0, y: 0 }
   },
@@ -72,6 +73,8 @@ export default new Router({
          
           component: () => import('./views/Search.vue')
         },
+    { path: '*', component: NotFound },  
+        
       ]
     },
   ]

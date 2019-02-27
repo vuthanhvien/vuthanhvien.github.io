@@ -54,6 +54,7 @@ export default {
 
 .blog {
   .blog-detail {
+    background-size: cover!important;
     margin-bottom: 20px;
     height: 300px;
     padding: 15px;
