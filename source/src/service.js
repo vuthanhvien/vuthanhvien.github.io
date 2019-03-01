@@ -17,7 +17,7 @@ export const getPosts = async (page = 1) => {
     console.log(page);
     let posts = [];
     const limit = 20;
-    const orderBy = 'createAt_desc';
+    const orderBy = 'createdAt_asc';
     const skip = (page - 1)* limit;
     const where = {};
     await apolloClient.query({
@@ -57,7 +57,7 @@ export const getSearchPosts = async (page = 1, keySearch = '') => {
     console.log(page);
     let posts = [];
     const limit = 20;
-    const orderBy = 'createAt_desc';
+    const orderBy = 'createdAt_asc';
     const skip = (page - 1)* limit;
     const where = {
         tags_like: keySearch

@@ -23,12 +23,10 @@
            <a class="pointer text-white" :href="`https://www.facebook.com/sharer/sharer.php?u=`+ currentUrl" target="_blank">
                 <i class="fa fa-facebook" style="font-size: 28px" />
             </a>
-            
 
-<a :href="`https://twitter.com/share?u=`+currentUrl">
+            <a  class="pointer text-white"  :href="`https://twitter.com/share?u=`+currentUrl" target="_blank">
                 <i class="fa fa-twitter" style="font-size: 28px" />
-
-</a>
+            </a>
         </div>
       </div>
     </div>
@@ -138,7 +136,7 @@ export default {
     word-break: break-all;
     word-wrap: break-word;
     background-color: #f5f5f5;
-    border: 1px solid #ccc;
+    border: 1px solid #c93659;
     border-radius: 4px;
   }
   img {
@@ -154,13 +152,13 @@ export default {
 
   background-size: cover;
   .content {
-    padding-top: 230px;
+    padding-top: 190px;
     background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0.8)
     );
-    height: 400px;
+    min-height: 400px;
     .hashtag {
       a {
         color: white;

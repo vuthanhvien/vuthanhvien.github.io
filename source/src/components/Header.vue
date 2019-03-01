@@ -16,9 +16,9 @@
            <li> <router-link to="/whoiam">
           Who I am?
           </router-link></li>
-           <li> <router-link to="/contact">
+           <!-- <li> <router-link to="/contact">
           Contact
-          </router-link></li>
+          </router-link></li> -->
        
       </ul>
       <div class="close" @click="toggleMenu"/> 
@@ -76,11 +76,11 @@
                   <router-link to="/whoiam">Who I am?</router-link>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <div class="menu-item">
                   <router-link to="/contact">Contact</router-link>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="search" :class="{active: keySearch}">

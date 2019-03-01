@@ -5,6 +5,22 @@
 </template>
 
 <style lang="scss">
+body {
+  font-family: "Cabin", sans-serif !important;
+  background: white;
+}
+p,
+a,
+li,
+ul,
+span,
+span {
+  font-size: 14px;
+}
+*:focus {
+  outline: 0 !important;
+}
+
 #app {
   font-family: "Montserrat", sans-serif !important;
   -webkit-font-smoothing: antialiased;

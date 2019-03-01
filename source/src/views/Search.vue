@@ -4,7 +4,23 @@
     <br>
     <div>
       <div class="container">
-        <h2>Search for: <strong>{{keySearch}}</strong></h2>
+        <div class="row">
+          <div class="col-md-9">
+            <h2>Search for: <strong>{{keySearch}}</strong></h2>
+
+          </div>
+          <div class="col-md-3">
+            <div class="select">
+             <select @change="onChange($event)" v-model="sortKey">
+              <option value="name_desc">Sort by name a -> z</option>
+              <option value="name_asc">Sort by name z -> a</option>
+              <option  value="createdAt_desc">Sort by newest </option>
+              <option  value="createdAt_asc">Sort by oldest </option>
+            </select>
+          </div>
+          </div>
+        </div>
+       
       </div>
       </div>
     <div class="container">
@@ -33,10 +49,14 @@ export default {
       keySearch: "",
       blogs: [],
       pageIndex: 1,
-      total: 0
+      total: 0,
+      sortKey: 'createdAt_desc'
     };
   },
   methods: {
+    onChange(event){
+      console.log(event.target.value)
+    },
     onChangePage() {},
     doSearch() {
       this.keySearch = this.$route.query.s;
@@ -72,6 +92,13 @@ export default {
     color: #999;
     strong {
       color: #444;
+    }
+  }
+  .select {
+    select {
+      height: 45px;
+      padding-left: 15px;
+      width: 100%;
     }
   }
 }
