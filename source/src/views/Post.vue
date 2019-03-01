@@ -20,9 +20,15 @@
             class="time"
             v-if="data.createdAt"
           >Posted {{data.createdAt | formatDate}} by {{data.author && data.author.name}}</p>
-           <a class="pointer text-white" href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
-        <i class="fa fa-facebook" style="font-size: 28px" />
-      </a>
+           <a class="pointer text-white" :href="`https://www.facebook.com/sharer/sharer.php?u=`+ currentUrl" target="_blank">
+                <i class="fa fa-facebook" style="font-size: 28px" />
+            </a>
+            
+
+<a :href="`https://twitter.com/share?u=`+currentUrl">
+                <i class="fa fa-twitter" style="font-size: 28px" />
+
+</a>
         </div>
       </div>
     </div>
@@ -30,7 +36,7 @@
       <br>
       <br>
         <div class="row">
-          <div class="col-md-10 offset-md-1">
+          <div class="main-content col-md-10 offset-md-1">
         <VueMarkdown :source='data.content'></VueMarkdown>
     </div>
     </div>
@@ -42,8 +48,8 @@
         <div class="col-md-6">
           <textarea style="width: 100%; height: 900px" v-model="data.content" ></textarea>
         </div>
-        <div class="col-md-6">
-          <div style=" height: 900px; overflow: auto">
+        <div class="col-md-6" >
+          <div class="main-content" style=" height: 900px; overflow: auto">
           <VueMarkdown :source='data.content'></VueMarkdown>
             
           </div>
@@ -65,7 +71,8 @@ export default {
   },
   data() {
     return {
-      data: {}
+      data: {},
+      currentUrl: ""
     };
   },
   methods: {
@@ -85,6 +92,7 @@ export default {
   },
   created: function() {
     console.log(this);
+    this.currentUrl = window.location.href;
     this.getData();
   }
 };
@@ -95,15 +103,30 @@ export default {
   max-width: 90%;
 }
 .main-content {
+  blockquote {
+    border-left: 3px solid #c93659;
+    padding: 25px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    background: #f4f4f4;
+  }
+  p,
+  li {
+    font-size: 15px;
+  }
   p {
     text-align: justify;
   }
   h1,
   h2,
-  h3,
   h4,
+  h3 {
+    font-weight: bold;
+    color: #c93659;
+  }
   h5 {
     font-weight: bold;
+    color: #555;
   }
   pre {
     display: block;
@@ -119,7 +142,9 @@ export default {
     border-radius: 4px;
   }
   img {
-    width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
   }
 }
 .cover {
