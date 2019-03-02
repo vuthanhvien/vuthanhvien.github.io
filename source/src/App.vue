@@ -3,6 +3,16 @@
     <router-view/>
   </div>
 </template>
+<script>
+export default {
+  name: 'App',
+  watch: {
+    '$router.query.p'(){
+      console.log(this.$router.query.p)
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 body {
