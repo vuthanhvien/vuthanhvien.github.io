@@ -6,11 +6,21 @@
 <script>
 export default {
   name: 'App',
-  watch: {
-    '$router.query.p'(){
-      console.log(this.$router.query.p)
-    }
-  }
+   created() {
+      console.log(this.$route.query.p);
+      console.log(this.$route.query.q);
+      const query  = {};
+      if(this.$route.query.q){
+        const querys = this.$route.query.q.split('~and~');
+        querys.map(item=>{
+          const q = item.split('=');
+          query[q[0]] = q[1];
+        })
+      }
+      console.log({ name: this.$route.query.p , query: query });
+      // this.$route.
+      this.$router.push({ path: this.$route.query.p , query: query })
+  },
 }
 </script>
 
