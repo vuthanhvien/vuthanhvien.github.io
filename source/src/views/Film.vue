@@ -28,8 +28,8 @@
             <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
       </div>
       <div class="col-md-2">
-          <h5>Book review</h5>
-          <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h5>Film review</h5>
+          <p>Lifes, stories, characters, scence  make best feeling, best emotions</p>
           <br>
           <h5>Tags</h5>
           <ul>
@@ -67,7 +67,7 @@ export default {
       pageIndex: 1,
       total: 0,
       first: {},
-      tags: ["flutter", "frontend", "js", "html", "css"],
+      tags: ["review", "hobby", "film"],
       authors: ["Viên Vũ"]
     };
   },

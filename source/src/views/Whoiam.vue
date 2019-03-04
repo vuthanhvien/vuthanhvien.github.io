@@ -4,9 +4,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 info" >
+          <div class="avatar">
+          <img src="avatar.jpg">
+        </div>
           <br>
           <br>
-          <h5>Hi, I'm Vien Vu,<span> a developer and UI/UX designer for 4 year, I can work with a team or alone. I willing for new language and new challenge</span></h5>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h5 style="padding: 0 20px">Hi, I'm Vien Vu,<span> a developer and UI/UX designer for 4 year, I can work with a team or alone. I willing for new language and new challenge</span></h5>
           <br>
           <br>
           <h4>My education</h4>
@@ -170,7 +177,7 @@ label{
       padding-left: 15px;
     }
     .date{
-      background: white;
+      background: #f7c5d1;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
       font-size: 13px;
@@ -182,7 +189,7 @@ label{
     width: 0;
     height: 0;
     position: absolute;
-    border-right: 10px white solid;
+    border-right: 10px #f7c5d1 solid;
     border-top: 10px transparent solid;
     border-bottom: 10px transparent solid;
     left: -10px;
@@ -221,7 +228,7 @@ label{
   border-bottom-right-radius: 25px;
 }
 .cover {
-  background: url(https://external-preview.redd.it/0H5OoJGEJBKc9OIjCNwnXOxw7gCDdkAwwOpLc8uicLE.jpg?width=1024&auto=webp&s=092cd23bf9c2f58fd21cb3073aff13f69fe18241);
+  background: url('/bg.jpg');
   min-height: 401px;
   background-size: cover;
   background-position: center;
@@ -239,5 +246,42 @@ h5 {
   font-weight: bold;
   // color: #ca3a5c;
 }
+
+.avatar {
+    display: inline-block;
+    width: 170px;
+    height: 170px;
+    transform: rotate(45deg);
+    overflow: hidden;
+
+    border-top: 3px solid #ca3a5c;
+    border-right: 3px solid #ca3a5c;
+    border-radius: 5px;
+    margin-top: 25px;
+    transition: all linear 0.3s;
+        position: absolute;
+    top: -84px;
+    margin: 0 auto;
+    display: block;
+        left: calc(50% - 85px);
+    &:after {
+      content: "";
+      background: white;
+      // border: 3px solid #ca3a5c;
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      z-index: -1;
+    }
+    img {
+         width: 153%;
+    transform: rotate(-45deg);
+    margin-top: -44px;
+    margin-left: -27px;
+    }
+  }
 </style>
 

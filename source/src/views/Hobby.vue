@@ -28,8 +28,8 @@
             <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
       </div>
       <div class="col-md-2">
-          <h5>Book review</h5>
-          <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h5>Hobby</h5>
+          <p style="text-align: justify">One day have 24hrs, 8hrs for sleep. I will not use 16hrs for working. I want to going to travel, read book, watch film, write blog, more and more ...</p>
           <br>
           <h5>Tags</h5>
           <ul>
@@ -67,7 +67,7 @@ export default {
       pageIndex: 1,
       total: 0,
       first: {},
-      tags: ["flutter", "frontend", "js", "html", "css"],
+      tags: ["book", "revỉew", "travel", "film", "phuot"],
       authors: ["Viên Vũ"]
     };
   },

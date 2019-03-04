@@ -6,9 +6,7 @@
 <script>
 export default {
   name: 'App',
-   created() {
-      console.log(this.$route.query.p);
-      console.log(this.$route.query.q);
+   beforeCreate() {
       const query  = {};
       if(this.$route.query.q){
         const querys = this.$route.query.q.split('~and~');
@@ -17,8 +15,6 @@ export default {
           query[q[0]] = q[1];
         })
       }
-      console.log({ name: this.$route.query.p , query: query });
-      // this.$route.
       this.$router.push({ path: this.$route.query.p , query: query })
   },
 }
@@ -61,14 +57,5 @@ span {
 .text-white {
   color: white !important;
 }
-// #nav {
-//   padding: 30px;
-//   a {
-//     font-weight: bold;
-//     color: #2c3e50;
-//     &.router-link-exact-active {
-//       color: #42b983;
-//     }
-//   }
-// }
+ 
 </style>

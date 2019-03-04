@@ -27,8 +27,8 @@
             <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
       </div>
       <div class="col-md-2">
-          <h5>Book review</h5>
-          <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <h5>Programming</h5>
+          <p style="text-align: justify">Programming is not dry, hard. That is happy when found solution, that is joyful when a code can work!</p>
           <br>
           <h5>Tags</h5>
           <ul>

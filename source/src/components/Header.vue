@@ -1,19 +1,19 @@
 <template>
 <div >
     <div class="mobile-menu" :class="{show: menuOpen}" >
-      <ul @click="$event.preventDefault()" >
+      <ul @click="toggleMenu" >
         <li>
-          <router-link to="/">
+          <router-link to="/"  >
           Home
           </router-link>
           </li>
-        <li> <router-link to="/programming">
+        <li> <router-link to="/programming" >
           Programming
           </router-link></li>
-           <li> <router-link to="/hobby">
+           <li> <router-link to="/hobby"  >
           Hobby
           </router-link></li>
-           <li> <router-link to="/whoiam">
+           <li> <router-link to="/whoiam"  >
           Who I am?
           </router-link></li>
            <!-- <li> <router-link to="/contact">
