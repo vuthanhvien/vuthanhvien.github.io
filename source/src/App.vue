@@ -8,14 +8,14 @@ export default {
   name: 'App',
    beforeCreate() {
       const query  = {};
-      if(this.$route.query.q){
-        const querys = this.$route.query.q.split('~and~');
-        querys.map(item=>{
-          const q = item.split('=');
-          query[q[0]] = q[1];
-        })
-      }
-      this.$router.push({ path: this.$route.query.p , query: query })
+      // if(this.$route.query.q){
+      //   const querys = this.$route.query.q.split('~and~');
+      //   querys.map(item=>{
+      //     const q = item.split('=');
+      //     query[q[0]] = q[1];
+      //   })
+      // }
+      // this.$router.push({ path: this.$route.query.p , query: query })
   },
 }
 </script>
