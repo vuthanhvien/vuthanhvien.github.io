@@ -1,127 +1,42 @@
 
-import gql from 'graphql-tag';
-import ApolloClient from 'apollo-boost'
+import Firebase from 'firebase'
+const firebaseApp = Firebase.initializeApp({
+    apiKey: "AIzaSyA_SaxCtCPPEqkpTKdz2yxa1oSySVzLHfw",
+    authDomain: "vienvu-7e64f.firebaseapp.com",
+    databaseURL: "https://vienvu-7e64f.firebaseio.com",
+    projectId: "vienvu-7e64f",
+    storageBucket: "vienvu-7e64f.appspot.com",
+    messagingSenderId: "236828354",
+    appId: "1:236828354:web:060e6e55a47c01ed"
+  });
+ 
 
+const firebase = firebaseApp.firestore();
 
-const apolloClient = new ApolloClient({
-  uri: 'https://us-central1-vienvu-7e64f.cloudfunctions.net/api/graphql'
-})
-
-// const apolloProvider = new VueApollo({
-//   defaultClient: apolloClient,
-// })
-
-
-
-export const getPosts = async (page = 1) => {
-    console.log(page);
-    let posts = [];
-    const limit = 20;
-    const orderBy = 'createdAt_asc';
-    const skip = (page - 1)* limit;
-    const where = {};
-    await apolloClient.query({
-        query: gql`
-        query getPosts($where: Json, $limit: Int, $skip: Int, $orderBy: String){
-                data:posts(where: $where, limit: $limit, skip: $skip, orderBy: $orderBy){
-                    list{
-                        id
-                        name
-                        content
-                        background
-                        author{
-                            id
-                            name
-                        }
-                        createdAt
-                        updatedAt
-                        color
-                        tags
-                        width
-                    }
-                    total
-                }
-            }
-        `,
-        variables: {limit, orderBy, skip, where},
-        fetchPolicy: 'network-only'
-    }).then(re=>{
-        posts = JSON.parse(JSON.stringify(re.data.data));
-        posts.list.map(item=>{
-            item.tags = item.tags ? item.tags.split(',')  : [];
-        })
-    })
-    return posts;
+export const getPosts = async () => {
+    const snapshot = await firebase.collection('post').get();
+    const list = snapshot.docs.map((doc) => {
+        const data =  doc.data();
+        data.tags = data.tags ? data.tags.split(',')  : [];
+        return data;
+    });
+    return {
+        list: list.filter(item=>item.id)
+    };
 }
 export const getSearchPosts = async (page = 1, keySearch = '') => {
-    console.log(page);
-    let posts = [];
-    const limit = 20;
-    const orderBy = 'createdAt_asc';
-    const skip = (page - 1)* limit;
-    const where = {
-        tags_like: keySearch
+    const snapshot = await firebase.collection('post').get();
+    const list = snapshot.docs.map((doc) => {
+        const data =  doc.data();
+        data.tags = data.tags ? data.tags.split(',')  : [];
+        return data;
+    });
+    return {
+        list: list.filter(item=>item.id).filter(item=>item.tags.join('').indexOf(keySearch) > -1 )
     };
-    
-    await apolloClient.query({
-        query: gql`
-            query getPosts($where: Json, $limit: Int, $skip: Int, $orderBy: String){
-                data:posts(where: $where, limit: $limit, skip: $skip, orderBy: $orderBy){
-                    list{
-                        id
-                        name
-                        background
-                        content
-                        author{
-                            id
-                            name
-                        }
-                        createdAt
-                        updatedAt
-                        color
-                        tags
-                        width
-                    }
-                    total
-                }
-            }
-        `,
-        variables: {limit, orderBy, skip, where},
-        fetchPolicy: 'network-only'
-    }).then(re=>{
-        posts = JSON.parse(JSON.stringify(re.data.data))
-        posts.list.map(item=>{
-            item.tags = item.tags ? item.tags.split(',')  : [];
-        })
-    })
-    return posts;
 }
 export const getPost = async (id) => {
-    let post = {}
-    await apolloClient.query({
-        query: gql`
-            query getPost($id: String!){
-                data:post(id: $id){
-                    id
-                    name
-                    content
-                    background
-                    author{
-                        id
-                        name
-                    }
-                    createdAt
-                    updatedAt
-                    color
-                    tags
-                    width
-                }
-            }
-        `,
-        variables: {id},
-        fetchPolicy: 'network-only'
-    }).then(re=>{
-        post = JSON.parse(JSON.stringify(re.data.data))
-    })
-    return post;
+    const snapshot = await firebase.collection('post').doc(id).get();
+    const data =  snapshot.data();
+    return data;
 }

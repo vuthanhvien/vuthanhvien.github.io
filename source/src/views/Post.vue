@@ -12,48 +12,55 @@
           </p>
           <h2>
             <strong>{{data.name}}</strong>
-              <b-button class="pull-right" v-b-modal.modal1 >
-          <i class="fa fa-pencil"/>
-        </b-button>
+            <!-- <b-button class="pull-right" v-b-modal.modal1>
+              <i class="fa fa-pencil"/>
+            </b-button> -->
           </h2>
           <p
             class="time"
             v-if="data.createdAt"
           >Posted {{data.createdAt | formatDate}} by {{data.author && data.author.name}}</p>
-           <a class="pointer text-white" :href="`https://www.facebook.com/sharer/sharer.php?u=`+ currentUrl" target="_blank">
-                <i class="fa fa-facebook" style="font-size: 28px" />
-            </a>
+          <a
+            class="pointer text-white"
+            :href="`https://www.facebook.com/sharer/sharer.php?u=`+ currentUrl"
+            target="_blank"
+          >
+            <i class="fa fa-facebook" style="font-size: 28px"/>
+          </a>
 
-            <a  class="pointer text-white"  :href="`https://twitter.com/share?u=`+currentUrl" target="_blank">
-                <i class="fa fa-twitter" style="font-size: 28px" />
-            </a>
+          <a
+            class="pointer text-white"
+            :href="`https://twitter.com/share?u=`+currentUrl"
+            target="_blank"
+          >
+            <i class="fa fa-twitter" style="font-size: 28px"/>
+          </a>
         </div>
       </div>
     </div>
     <div class="container">
       <br>
       <br>
-        <div class="row">
-          <div class="main-content col-md-10 offset-md-1">
-        <VueMarkdown :source='data.content'></VueMarkdown>
-    </div>
-    </div>
+      <div class="row">
+        <div class="main-content col-md-10 offset-md-1">
+          <VueMarkdown :source="data.content"></VueMarkdown>
+        </div>
+      </div>
       <br>
       <br>
     </div>
     <b-modal size="slg" id="modal1" title="Edit post">
       <div class="row">
         <div class="col-md-6">
-          <textarea style="width: 100%; height: 900px" v-model="data.content" ></textarea>
+          <textarea style="width: 100%; height: 900px" v-model="data.content"></textarea>
         </div>
-        <div class="col-md-6" >
+        <div class="col-md-6">
           <div class="main-content" style=" height: 900px; overflow: auto">
-          <VueMarkdown :source='data.content'></VueMarkdown>
-            
+            <VueMarkdown :source="data.content"></VueMarkdown>
           </div>
         </div>
       </div>
-  </b-modal>
+    </b-modal>
   </div>
 </template>
 

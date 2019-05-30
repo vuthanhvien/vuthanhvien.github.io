@@ -25,6 +25,8 @@ body {
   font-family: "Cabin", sans-serif !important;
   background: white;
 }
+p::-moz-selection,
+p::selection { color: #ca3a5c; background: #ca3a5c; }
 p,
 a,
 li,

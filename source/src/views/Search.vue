@@ -10,7 +10,7 @@
 
           </div>
           <div class="col-md-3">
-            <div class="select">
+            <div class="form-controll select">
              <select @change="onChange($event)" v-model="sortKey">
               <option value="name_desc">Sort by name a -> z</option>
               <option value="name_asc">Sort by name z -> a</option>
