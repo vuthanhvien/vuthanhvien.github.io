@@ -151,6 +151,10 @@ export default {
     return {
       skills: [{ id: "html", title: "Html", img: "" }]
     };
+  },
+  created(){
+      document.title = 'Viên Vũ | Whoiam' ;
+
   }
 };
 </script>

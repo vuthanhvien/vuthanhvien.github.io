@@ -74,6 +74,7 @@ export default {
   methods: {
     onChangePage() {},
     doSearch() {
+      document.title = 'Viên Vũ | Book';
       this.keySearch = "book";
       const that = this;
       getSearchPosts(this.pageIndex, this.keySearch).then(data => {

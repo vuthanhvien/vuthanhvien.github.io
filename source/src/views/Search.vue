@@ -60,6 +60,7 @@ export default {
     onChangePage() {},
     doSearch() {
       this.keySearch = this.$route.query.s;
+      document.title = 'Viên Vũ | Search "'+ this.keySearch+'"' ;
       const that = this;
       console.log("doSearch");
       getSearchPosts(this.pageIndex, this.keySearch).then(data => {

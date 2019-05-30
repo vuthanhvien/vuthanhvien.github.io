@@ -75,6 +75,7 @@ export default {
     onChangePage() {},
     doSearch() {
       this.keySearch = "film";
+      document.title = 'Viên Vũ | Film' ;
       const that = this;
       getSearchPosts(this.pageIndex, this.keySearch).then(data => {
         that.blogs = [];

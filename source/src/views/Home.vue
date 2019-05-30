@@ -33,6 +33,7 @@ export default {
       this.pageIndex = params;
     },
     getData: function () {
+      document.title = 'Viên Vũ | Home';
       const that = this;
       getPosts(this.pageIndex).then((data) => {
       that.blogs = [];

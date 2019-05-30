@@ -112,7 +112,7 @@ export default {
           data.tags = [];
         }
         that.data = data;
-        document.title = data.name;
+        document.title = 'Viên Vũ | '+data.name;
         document.description = data.name;
       });
     }
