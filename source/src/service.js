@@ -41,6 +41,7 @@ export const getPost = async (id) => {
     return data;
 }
 export const savePost = async (data) => {
+    data = JSON.parse(JSON.stringify(data));
     data.tags = data.tags ? data.tags.join(',') : '';
     await firebase.collection('post').doc(data.id).set(data);
     return data;

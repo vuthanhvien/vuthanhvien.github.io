@@ -76,10 +76,10 @@
 
 <script>
 // @ is an alias to /src
-import { getPost } from "@/service.js";
+import { getPost, savePost } from "@/service.js";
 import VueMarkdown from "vue-markdown";
-import { savePost } from "@/service.js";
-
+import firebase from "firebase";
+ 
 export default {
   name: "home",
   components: {
@@ -96,7 +96,7 @@ export default {
     
     edit() {},
     save() {
-      savePost(this.data).then(re=>{
+      savePost(this.data).then(()=>{
         this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow')
       })
     },
@@ -106,9 +106,8 @@ export default {
     getData: function() {
       const that = this;
       const id = this.$route.params.id;
-      console.log(this.$route);
       this.editMode = this.$route.query.edit === 'vienvuthanh';
-      this.editMode = true;
+      // this.editMode = true;
       getPost(id).then(function(data) {
         if (data.tags) {
           data.tags = data.tags.split(",");
