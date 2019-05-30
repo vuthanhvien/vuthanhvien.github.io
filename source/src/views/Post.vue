@@ -42,8 +42,11 @@
       <br>
       <br>
       <div class="row">
-        <div class="main-content col-md-10 offset-md-1">
+        <div class="main-content col-md-9">
           <VueMarkdown :source="data.content"></VueMarkdown>
+        </div>
+        <div class="toc-content col-md-3">
+          <VueMarkdown :source="data.content" :toc="true"></VueMarkdown>
         </div>
       </div>
       <br>
@@ -105,6 +108,7 @@ export default {
       const id = this.$route.params.id;
       console.log(this.$route);
       this.editMode = this.$route.query.edit === 'vienvuthanh';
+      this.editMode = true;
       getPost(id).then(function(data) {
         if (data.tags) {
           data.tags = data.tags.split(",");
@@ -135,6 +139,28 @@ export default {
   width: 90%;
   max-width: 90%;
 }
+.toc-content{
+  background: #f4f4f4;
+  padding-top: 40px;
+  h1,h2,h3, h4,h5,h6{
+    padding: 4px;
+    transition: all .3s linear;
+    &:hover{
+      background: #ccc;
+    }
+  }
+  h1,h2,h3, h4{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  p,li,h4,h5,h6{
+    font-size: 14px;
+    padding-left: 15px;
+  }
+  p{
+    display: none;
+  }
+}
 .main-content {
   blockquote {
     border-left: 3px solid #c93659;
@@ -160,6 +186,24 @@ export default {
   h5 {
     font-weight: bold;
     color: #555;
+  }
+  h1{
+    font-size: 28px;
+  }
+  h2{
+    font-size: 24px;
+  }
+  h3{
+    font-size: 22px;
+  }
+  h4{
+    font-size: 20px;
+  }
+  h5{
+    font-size: 18px;
+  }
+  h6{
+    font-size: 16px;
   }
   pre {
     display: block;
