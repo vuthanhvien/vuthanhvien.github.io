@@ -12,9 +12,9 @@
           </p>
           <h2>
             <strong>{{data.name}}</strong>
-            <!-- <b-button class="pull-right" v-b-modal.modal1>
+            <b-button v-if="editMode" class="pull-right" v-b-modal.modal1>
               <i class="fa fa-pencil"/>
-            </b-button> -->
+            </b-button>
           </h2>
           <p
             class="time"
@@ -49,7 +49,7 @@
       <br>
       <br>
     </div>
-    <b-modal size="slg" id="modal1" title="Edit post">
+    <b-modal size="slg" id="modal1" title="Edit post" hide-footer>
       <div class="row">
         <div class="col-md-6">
           <textarea style="width: 100%; height: 900px" v-model="data.content"></textarea>
@@ -60,6 +60,13 @@
           </div>
         </div>
       </div>
+      <hr>
+      <div class="text-right">
+        <b-button class="mt-3" variant="outline-basic" @click="close()" >Close</b-button>
+        &nbsp;
+        &nbsp;
+        <b-button class="mt-3 " variant="success"  @click="save()">Save</b-button>
+      </div>
     </b-modal>
   </div>
 </template>
@@ -68,6 +75,7 @@
 // @ is an alias to /src
 import { getPost } from "@/service.js";
 import VueMarkdown from "vue-markdown";
+import { savePost } from "@/service.js";
 
 export default {
   name: "home",
@@ -77,14 +85,26 @@ export default {
   data() {
     return {
       data: {},
-      currentUrl: ""
+      currentUrl: "",
+      editMode: false
     };
   },
   methods: {
+    
     edit() {},
+    save() {
+      savePost(this.data).then(re=>{
+        this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow')
+      })
+    },
+    close() {
+      this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow')
+    },
     getData: function() {
       const that = this;
       const id = this.$route.params.id;
+      console.log(this.$route);
+      this.editMode = this.$route.query.edit === 'vienvuthanh';
       getPost(id).then(function(data) {
         if (data.tags) {
           data.tags = data.tags.split(",");
@@ -92,13 +112,21 @@ export default {
           data.tags = [];
         }
         that.data = data;
+        document.title = data.name;
+        document.description = data.name;
       });
+    }
+  },
+  watch: {
+    '$route.query.edit'(){
+      this.editMode = this.$route.query.edit === 'vienvuthanh';
     }
   },
   created: function() {
     console.log(this);
     this.currentUrl = window.location.href;
     this.getData();
+    
   }
 };
 </script>

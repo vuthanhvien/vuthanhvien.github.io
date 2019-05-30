@@ -40,3 +40,8 @@ export const getPost = async (id) => {
     const data =  snapshot.data();
     return data;
 }
+export const savePost = async (data) => {
+    await firebase.collection('post').doc(data.id).set(data);
+    return data;
+
+}
