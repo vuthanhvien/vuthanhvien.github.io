@@ -21,7 +21,7 @@ export const getPosts = async () => {
         return data;
     });
     return {
-        list: list.filter(item=>item.id)
+        list: list.filter(item=>item.id).sort((a, b) => b.createdAt - a.createdAt )
     };
 }
 export const getSearchPosts = async (page = 1, keySearch = '') => {
@@ -32,7 +32,7 @@ export const getSearchPosts = async (page = 1, keySearch = '') => {
         return data;
     });
     return {
-        list: list.filter(item=>item.id).filter(item=>item.tags.join('').indexOf(keySearch) > -1 )
+        list: list.filter(item=>item.id).sort((a, b) => b.createdAt - a.createdAt ).filter(item=>item.tags.join('').indexOf(keySearch) > -1 )
     };
 }
 export const getPost = async (id) => {
