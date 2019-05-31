@@ -14,9 +14,10 @@
             <router-link :to="'/post/'+post.id">
               <h5>{{post.name}}</h5>
             </router-link>
-            <p class="time" v-if="post.createdAt">Posted {{post.createdAt | formatDate}} by {{post.author && post.author.name}}</p>
+            <p class="time" v-if="post.createdAt">Posted {{post.createdAt | formatDate}}</p>
           </div>
           <div class="overflow" :style="{background: post.color}"/>
+          <div class="overflow-2"/>
         </div>
       </div>
     </div>
@@ -84,6 +85,8 @@ export default {
         color: white;
         cursor: pointer;
         font-size: 24px;
+        max-height: 55px;
+        overflow: hidden;
         &:hover {
           text-decoration: underline;
         }
@@ -94,14 +97,27 @@ export default {
       width: 100%;
     }
     .overflow {
+      
       position: absolute;
       top: 0;
       right: 0;
       left: 0;
       bottom: 0;
       pointer-events: none;
-      opacity: 0.3;
+      opacity: 0.5;
       z-index: 0;
+    }
+    .overflow-2 {
+      position: absolute;
+      top: 30%;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: 0;
+      // background: black;
+      background-image: linear-gradient(to bottom, transparent , black);
     }
   }
 }

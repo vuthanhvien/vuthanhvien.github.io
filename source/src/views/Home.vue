@@ -2,7 +2,15 @@
   <div class="home">
     <Intro/>
     <Blog :data="blogs"/>
-    <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
+    <!-- <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
+     -->
+     <br>
+
+     <div class="text-center">
+     <!-- <b-button class="see-more" size="sm">&nbsp; See more <i class="fa fa-chevron-down" /> &nbsp;</b-button> -->
+     </div>
+     <br>
+
   </div>
 </template>
 
@@ -56,6 +64,14 @@ export default {
 };
 </script>
 <style lang="scss">
+  .see-more{
+    background: #ca3a5c;
+    border: 0;
+    &:hover{
+    background: #a50e32;
 
+    }
+  }
+  
 </style>
 

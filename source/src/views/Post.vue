@@ -45,8 +45,10 @@
         <div class="main-content col-md-9">
           <VueMarkdown :source="data.content"></VueMarkdown>
         </div>
-        <div class="toc-content col-md-3">
-          <VueMarkdown :source="data.content" :toc="true"></VueMarkdown>
+        <div class=" col-md-3 d-none d-md-block">
+          <div class="toc-content">
+            <VueMarkdown :source="data.content" :toc="true" :toc-first-level="3" :toc-last-level="6"></VueMarkdown>
+          </div>
         </div>
       </div>
       <br>
@@ -156,7 +158,7 @@ export default {
     font-size: 14px;
     padding-left: 15px;
   }
-  p{
+  p, a, li, blockquote, code{
     display: none;
   }
 }
