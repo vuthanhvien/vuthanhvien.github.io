@@ -18,7 +18,6 @@
 // @ is an alias to /src
 import Intro from "@/components/Intro.vue";
 import Blog from "@/components/Blog.vue";
-import Pagination from "@/components/Pagination.vue";
 
 import { getPosts } from "@/service.js";
 
@@ -27,7 +26,6 @@ export default {
   components: {
     Intro,
     Blog,
-    Pagination
   },
   data() {
     return {

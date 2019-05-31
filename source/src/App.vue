@@ -7,11 +7,11 @@
 export default {
   name: 'App',
   beforeCreate () {
-    if (sessionStorage.redirect) {
-      const redirect = sessionStorage.redirect
-      delete sessionStorage.redirect
-      this.$router.push(redirect)
-    }
+    // if (sessionStorage.redirect) {
+    //   const redirect = sessionStorage.redirect
+    //   delete sessionStorage.redirect
+    //   this.$router.push(redirect)
+    // }
   }
 }
 </script>

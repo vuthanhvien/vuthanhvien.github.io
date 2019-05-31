@@ -80,7 +80,6 @@
 // @ is an alias to /src
 import { getPost, savePost } from "@/service.js";
 import VueMarkdown from "vue-markdown";
-import firebase from "firebase";
  
 export default {
   name: "home",
