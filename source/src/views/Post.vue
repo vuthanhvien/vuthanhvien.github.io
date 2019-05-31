@@ -12,7 +12,7 @@
           </p>
           <h2>
             <strong>{{data.name}}</strong>
-            <b-button v-if="editMode" class="pull-right" v-b-modal.modal1>
+            <b-button v-if="editMode" class="pull-right" @click="openModal()">
               <i class="fa fa-pencil"/>
             </b-button>
           </h2>
@@ -91,7 +91,8 @@ export default {
     return {
       data: {},
       currentUrl: "",
-      editMode: false
+      editMode: false,
+      interval: null
     };
   },
   methods: {
@@ -102,8 +103,15 @@ export default {
         this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow')
       })
     },
+    openModal(){
+      this.$root.$emit('bv::show::modal', 'modal1', '#btnShow');
+      this.interval = setInterval(()=>savePost(this.data).then(()=>{}), 3000);
+    },
     close() {
-      this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow')
+      this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow');
+      if(this.interval){
+        clearInterval(this.interval)
+      }
     },
     getData: function() {
       const that = this;
@@ -183,6 +191,8 @@ export default {
   h3 {
     font-weight: bold;
     color: #c93659;
+    margin-top: 10px;
+    margin-bottom: 15px;
   }
   h5 {
     font-weight: bold;
@@ -221,8 +231,9 @@ export default {
   }
   img {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 80%;
+
   }
 }
 .cover {

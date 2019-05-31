@@ -74,7 +74,17 @@
           <br>
           <div class="timeline">
             <div class="item">
-              <p class="date">Apr-2018 - Present</p>
+              <p class="date">Apr-2019 - Present</p>
+              <div class="content">
+              <h6><strong>Systum Inc.</strong></h6>
+              <p><i>Frontend developer (Full time)</i></p>
+              <br>
+              <br>
+              <br>
+              </div>
+            </div>
+            <div class="item">
+              <p class="date">Apr-2018 - Apr-2019 (1 year)</p>
               <div class="content">
               <h6><strong>GNT Việt Nam</strong></h6>
               <p><i>Frontend developer (Full time)</i></p>

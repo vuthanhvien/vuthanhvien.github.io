@@ -6,17 +6,13 @@
 <script>
 export default {
   name: 'App',
-   beforeCreate() {
-      const query  = {};
-      // if(this.$route.query.q){
-      //   const querys = this.$route.query.q.split('~and~');
-      //   querys.map(item=>{
-      //     const q = item.split('=');
-      //     query[q[0]] = q[1];
-      //   })
-      // }
-      // this.$router.push({ path: this.$route.query.p , query: query })
-  },
+  beforeCreate () {
+    if (sessionStorage.redirect) {
+      const redirect = sessionStorage.redirect
+      delete sessionStorage.redirect
+      this.$router.push(redirect)
+    }
+  }
 }
 </script>
 
@@ -26,7 +22,7 @@ body {
   background: white;
 }
 p::-moz-selection,
-p::selection { color: #ca3a5c; background: #ca3a5c; }
+p::selection { color: white; background-color: #ca3a5c; }
 p,
 a,
 li,
