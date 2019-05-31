@@ -19,7 +19,7 @@
           <p
             class="time"
             v-if="data.createdAt"
-          >Posted {{data.createdAt | formatDate}} by {{data.author && data.author.name}}</p>
+          >Posted {{data.createdAt | formatDate}} by {{data.author}}</p>
           <a
             class="pointer text-white"
             :href="`https://www.facebook.com/sharer/sharer.php?u=`+ currentUrl"

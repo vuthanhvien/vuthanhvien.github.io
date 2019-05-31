@@ -16,7 +16,7 @@
              &nbsp;#{{tag}}&nbsp;
             </router-link >
              <p class="time" v-if="first.createdAt">
-               Posted {{first.createdAt | formatDate}} by {{first.author && first.author.name}}
+               Posted {{first.createdAt | formatDate}} by {{first.author}}
              </p>
 
           </div>

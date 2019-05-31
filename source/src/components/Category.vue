@@ -25,7 +25,7 @@
                 :to="{path: '/search', query: {s: tag}}"
               >#{{tag}}</router-link>
             </p>
-            <p class="author">{{post.author && post.author.name}}</p>
+            <p class="author">{{post.author}}</p>
             <p class="time" v-if="post.createdAt">Posted {{post.createdAt | formatDate}}</p>
           </div>
         </div>
