@@ -158,7 +158,7 @@ export default {
     font-size: 14px;
     padding-left: 15px;
   }
-  p, a, li, blockquote, code{
+  p, a, li, blockquote, code, img{
     display: none;
   }
 }
