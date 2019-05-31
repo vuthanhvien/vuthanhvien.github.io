@@ -104,7 +104,7 @@ export default {
     },
     openModal(){
       this.$root.$emit('bv::show::modal', 'modal1', '#btnShow');
-      this.interval = setInterval(()=>savePost(this.data).then(()=>{}), 3000);
+      this.interval = setInterval(()=>savePost(this.data).then(()=>{}), 30000);
     },
     close() {
       this.$root.$emit('bv::hide::modal', 'modal1', '#btnShow');
