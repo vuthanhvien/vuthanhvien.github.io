@@ -13,7 +13,7 @@
           Hi! I'm
           <span>{{title}}</span>|
         </h1>
-        <h4>I'm a frontend developer, I love develop a new thing, good thing. Otherwise I have some hobby: discovery strange landing, read interesting book, enjoy moive on cinema, TV</h4>
+        <h4>I'm a front end developer, I love develop somethng thing, good thing. Otherwise I have some hobby: discover strange landing, read interesting book, enjoy movie on cinema, TV</h4>
         <p>
           <router-link  v-for="item in tags" :key="item"  :to="{ path: '/search', query: { s: item } }">#{{item}}</router-link>
         </p>

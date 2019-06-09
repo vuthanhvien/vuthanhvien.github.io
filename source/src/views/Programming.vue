@@ -89,6 +89,7 @@ export default {
             ...doc
           });
         });
+        that.blogs.shift();
       });
     }
   },
