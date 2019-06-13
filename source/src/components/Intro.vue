@@ -10,10 +10,11 @@
     <div class="row">
       <div class="col-md-7 offset-1">
         <h1>
-          Hi! I'm
+          Chào! Tôi là
           <span>{{title}}</span>|
         </h1>
-        <h4>I'm a front end developer, I love develop something new. Otherwise I have some hobby: discover strange landing, read interesting book, enjoy movie on cinema, TV</h4>
+        <h4>Tôi là một Frontend developer, tôi thích thú với việc tạo ra những sản phẩm mới. Tôi cũng rất có nhiều thứ để viết, viết về du lịch, phượt, review sách, review phim và nhiều nữa...</h4>
+        <!-- <h4>I'm a front end developer, I love develop something new. Otherwise I have some hobby: discover strange landing, read interesting book, enjoy movie on cinema, TV</h4> -->
         <p>
           <router-link  v-for="item in tags" :key="item"  :to="{ path: '/search', query: { s: item } }">#{{item}}</router-link>
         </p>
@@ -52,7 +53,7 @@ export default {
   data() {
     return {
       tags: ["programming", "travel", "book", "film"],
-      titles: ["Vien Vu", "Frontend developer", "UX/UI designer"],
+      titles: ["Viên Vũ", "Frontend developer", "UX/UI designer"],
       title: ""
     };
   },
@@ -88,7 +89,6 @@ export default {
     for (let j = 0; j < strings.length; j++) {
       total = total + strings[j].length;
     }
-    console.log(total);
     this.change();
   }
 };

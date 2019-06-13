@@ -26,7 +26,7 @@
               >#{{tag}}</router-link>
             </p>
             <p class="author">{{post.author}}</p>
-            <p class="time" v-if="post.createdAt">Posted {{post.createdAt | formatDate}}</p>
+            <p class="time" v-if="post.createdAt">Đăng lúc {{post.createdAt | formatDate}}</p>
           </div>
         </div>
         <!-- <div class="col-md-3">
@@ -40,7 +40,7 @@
     </div>
     <hr>
     <div class="no-result" v-if="!data.length">
-      <h4>No result</h4>
+      <h4>Không kết quả</h4>
     </div>
   </div>
 </template>

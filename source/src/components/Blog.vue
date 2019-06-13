@@ -14,7 +14,7 @@
             <router-link :to="'/post/'+post.id">
               <h5>{{post.name}}</h5>
             </router-link>
-            <p class="time" v-if="post.createdAt">Posted {{post.createdAt | formatDate}} by {{post.author}}</p>
+            <p class="time" v-if="post.createdAt">Đăng lúc {{post.createdAt | formatDate}} bởi {{post.author}}</p>
           </div>
           <div class="overflow" :style="{background: post.color}"/>
           <div class="overflow-2"/>

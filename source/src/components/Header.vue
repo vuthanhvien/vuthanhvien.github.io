@@ -4,17 +4,17 @@
       <ul @click="toggleMenu" >
         <li>
           <router-link to="/"  >
-          Home
+          Trang chủ
           </router-link>
           </li>
         <li> <router-link to="/programming" >
-          Programming
+          Lập trình
           </router-link></li>
            <li> <router-link to="/hobby"  >
-          Hobby
+          Sở thích
           </router-link></li>
            <li> <router-link to="/whoiam"  >
-          Who I am?
+          Tôi là ai?
           </router-link></li>
            <!-- <li> <router-link to="/contact">
           Contact
@@ -39,33 +39,33 @@
         <li>
           <div class="menu-item">
           <router-link to="/home">
-             Home
+              Trang chủ
           </router-link>
           </div>
         </li>
         <li>
           <div class="menu-item">
           <router-link to="/programming">
-             Programming
+             Lập trình
           </router-link>
           </div>
         </li>
         <li>
           <div class="menu-item">
             <router-link to="/hobby">
-              Hobby
+              Sở thích
               <i class="fa fa-chevron-down"/>
             </router-link>
             <div class="sub-menu">
               <ul>
                 <li>
-                  <router-link to="/hobby/travel">Travel</router-link>
+                  <router-link to="/hobby/travel">Du lịch</router-link>
                 </li>
                 <li>
-                  <router-link to="/hobby/film">Film review</router-link>
+                  <router-link to="/hobby/film">Đánh giá phim</router-link>
                 </li>
                 <li>
-                  <router-link to="/hobby/book">Book review</router-link>
+                  <router-link to="/hobby/book">Đánh giá sách</router-link>
                 </li>
               </ul>
             </div>
@@ -73,7 +73,7 @@
         </li>
         <li>
           <div class="menu-item">
-                  <router-link to="/whoiam">Who I am?</router-link>
+                  <router-link to="/whoiam">Tôi là ai?</router-link>
           </div>
         </li>
         <!-- <li>
@@ -85,7 +85,7 @@
     </div>
     <div class="search" :class="{active: keySearch}">
       <i class="fa fa-search"/>
-      <input @keyup.enter="search" v-model="keySearch" placeholder="Enter search key" />
+      <input @keyup.enter="search" v-model="keySearch" placeholder="Nhập từ tìm kiếm" />
     </div>
   </div>
   </div>

@@ -16,19 +16,20 @@
              &nbsp;#{{tag}}&nbsp;
             </router-link >
              <p class="time" v-if="first.createdAt">
-               Posted {{first.createdAt | formatDate}} by {{first.author}}
+               Đăng lúc {{first.createdAt | formatDate}} bởi {{first.author}}
              </p>
 
           </div>
           <br>
           <br>
-          <h5>LATEST</h5>
+          <h5>GẦN NHẤT</h5>
             <Category :data="blogs"/>
             <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
       </div>
       <div class="col-md-2">
-          <h5>Programming</h5>
-          <p style="text-align: justify">Programming is not dry, hard. That is happy when found solution, that is joyful when a code can work!</p>
+          <h5>Lập trình</h5>
+          <p style="text-align: justify">Lập trình không hề khó khăn, khô cứng, bạn sẽ rất vui khi giải quyết được một bài toán khó, tột cùng của vui sướng khi code bạn chạy được</p>
+          <!-- <p style="text-align: justify">Programming is not dry, hard. That is happy when found solution, that is joyful when a code can work!</p> -->
           <br>
           <h5>Tags</h5>
           <ul>
@@ -37,7 +38,7 @@
               </li>
           </ul>
           <br>
-          <h5>Authors</h5>
+          <h5>Tác giả</h5>
           <ul>
             <li v-for="author of authors" :key="author">
                   <router-link :to="{path: '/search', query: {s: author}}"  class="pointer">#{{author}}</router-link >

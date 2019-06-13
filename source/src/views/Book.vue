@@ -17,13 +17,13 @@
              &nbsp;#{{tag}}&nbsp;
             </router-link >
              <p class="time" v-if="first.createdAt">
-               Posted {{first.createdAt | formatDate}} by {{first.author}}
+               Đăng lúc  {{first.createdAt | formatDate}} bởi {{first.author}}
              </p>
 
           </div>
           <br>
           <br>
-          <h5>LATEST</h5>
+          <h5>GẦN NHẤT</h5>
             <Category :data="blogs"/>
             <Pagination :pageIndex="pageIndex" :total="total" :onChangePage="onChangePage"/>
       </div>

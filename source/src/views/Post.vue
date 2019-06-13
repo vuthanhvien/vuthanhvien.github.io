@@ -19,7 +19,7 @@
           <p
             class="time"
             v-if="data.createdAt"
-          >Posted {{data.createdAt | formatDate}} by {{data.author}}</p>
+          >Đăng lúc {{data.createdAt | formatDate}} bởi {{data.author}}</p>
           <a
             class="pointer text-white"
             :href="`https://www.facebook.com/sharer/sharer.php?u=`+ currentUrl"
@@ -135,7 +135,6 @@ export default {
     }
   },
   created: function() {
-    console.log(this);
     this.currentUrl = window.location.href;
     this.getData();
     

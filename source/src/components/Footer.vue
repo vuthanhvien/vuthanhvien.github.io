@@ -12,22 +12,22 @@
           <ul class="menu">
             <li>
               <router-link to="/home">
-                Home
+                Trang chủ
               </router-link>
             </li>
              <li>
               <router-link to="/programming">
-                Programming
+                Lập trình
               </router-link>
             </li>
              <li>
               <router-link to="/hobby">
-                Hobby
+                Sở thích
               </router-link>
             </li>
              <li>
               <router-link to="/whoiam">
-                Who I am?
+                Tôi là ai?
               </router-link>
             </li>
              <!-- <li>
@@ -39,7 +39,7 @@
         </div>
       </div>
     <hr>
-  <p class="text-center">Design and develop by <router-link  to="/whoiam">Vienvu</router-link></p>
+  <p class="text-center">Thiết kế và phát triển bởi <router-link  to="/whoiam">Vienvu</router-link></p>
   </div>
   </div>
 </template>
